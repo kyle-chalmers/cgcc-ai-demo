@@ -2,6 +2,8 @@
 
 This repo holds a small export of my YouTube channel data for a live demo at the CGCC Entrepreneurship Series. Requests here are short on purpose: these project rules fill in the rest.
 
+> IMPORTANT: Everything in this repo is public-facing, so do not place any sensitive info here and make sure to distinguish between what should be internal-facing info (e.g. secrets, PII, recording guides/scripts), and public-facing info (instructions, how-to guides, actual code utilized). If there is information the assistant needs across sessions but should not be published, put it in the `.internal/` folder which is ignored by git per the `.gitignore`.
+
 ## The data
 
 `data/demo-data.csv` has one row per video published from 2026-01-01 to 2026-07-19: 23 full-length videos and 107 Shorts. Each row covers that video's first 90 days after publishing, so every video gets the same amount of time. Columns: video_id, title, video_format, published_date, window_end, views, engaged_views, subscribers_gained, subscribers_lost. The numbers come from the YouTube Analytics API, and subscribers are those made on each video's watch page.
