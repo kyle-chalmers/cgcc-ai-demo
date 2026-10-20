@@ -14,7 +14,7 @@ This repo holds a small export of my YouTube channel data for a live demo at the
 - Compare full-length videos only with full-length videos, and Shorts only with Shorts.
 - Show counts first, then rates, and leave a rate blank when its denominator is zero.
 - Build the dashboard as one offline HTML file in the repo root named `live-dashboard.html` (`live-dashboard-bigquery.html` when built from BigQuery), with no external fonts, libraries, or network calls. Include the units, denominator, time window, source, and a plain-English explanation for somebody new to analytics, plus a source table of the rows.
-- Before calling anything done, check that full-length plus Shorts equals the overall total and that the totals match the CSV, and say what the data cannot prove.
+- Before calling anything done, check that full-length plus Shorts equals the overall total and that the totals match the source data (the CSV, or the BigQuery tables when building from BigQuery), and say what the data cannot prove.
 - This runs live in front of an audience. Keep the checks quick: verify totals by reading the data directly, skip browser screenshots and extra test tools, and aim to finish in about five minutes.
 - When the checks pass, commit the dashboard with a short, plain message.
 
@@ -27,4 +27,5 @@ This repo holds a small export of my YouTube channel data for a live demo at the
   - `daily_traffic_sources`: activity_date, video_id, traffic_source_type, views, snapshot_date.
 - A day can be loaded more than once: keep only the latest snapshot_date for each day, video, and traffic source.
 - Use videos published from 2026-01-01 through 2026-07-19 in Pacific time, and sum each video's views and subscribers gained from its publish day through 89 days later. Save the result as `data/bq-first-90-days.csv`.
-- These tables have no engaged views before June 15, 2026, so use subscribers per 1,000 views, and list any videos whose subscriber totals differ from `data/demo-data.csv`.
+- These tables have no engaged views before June 15, 2026, so use subscribers per 1,000 views.
+- Check the totals against the tables themselves: re-query the overall and per-format subscriber and view totals straight from `daily_video_analytics` and `daily_traffic_sources` with the same windows, confirm they match the dashboard and `data/bq-first-90-days.csv`, and confirm the video count matches `video_current`. Say if any video is missing days in its window.
